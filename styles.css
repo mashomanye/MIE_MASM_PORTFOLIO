@@ -142,7 +142,7 @@ nav {
 }
 
 .hero h1 span {
-    background: var(--gradient);
+    background:  linear-gradient(90deg,rgba(2, 0, 36, 1) 0%, rgba(0, 212, 255, 1) 4%, rgba(14, 148, 178, 1) 73%, rgba(26, 93, 112, 1) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -285,7 +285,7 @@ nav {
 .stat-number {
     font-size: 2rem;
     font-weight: 800;
-    background: var(--gradient);
+    background:  linear-gradient(90deg,rgba(2, 0, 36, 1) 0%, rgba(0, 212, 255, 1) 4%, rgba(14, 148, 178, 1) 73%, rgba(26, 93, 112, 1) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
