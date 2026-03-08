@@ -45,12 +45,59 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Form submission (placeholder)
-const contactForm = document.querySelector('.contact-form');
+// EmailJS Integration
+// IMPORTANT: Replace these with your actual EmailJS credentials
+// 1. Sign up at https://www.emailjs.com/
+// 2. Create an email service (e.g., Gmail)
+// 3. Create an email template with variables: {{from_name}}, {{from_email}}, {{message}}
+// 4. Get your Public Key, Service ID, and Template ID
+
+const EMAILJS_PUBLIC_KEY = 'Mat67Q4Rf5goxxDFQ';
+const EMAILJS_SERVICE_ID = 'service_ebbezvk';
+const EMAILJS_TEMPLATE_ID = 'template_8xn3hxj';
+
+// Initialize EmailJS with public key
+(function() {
+    emailjs.init({
+        publicKey: EMAILJS_PUBLIC_KEY
+    });
+})();
+
+// Form submission with EmailJS
+const contactForm = document.getElementById('contact-form');
+const submitBtn = document.getElementById('submit-btn');
+
 contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    alert('Thank you for your message! I will get back to you soon.');
-    contactForm.reset();
+    
+    // Change button text to show loading
+    const originalText = submitBtn.innerHTML;
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+    submitBtn.disabled = true;
+    
+    // Get form data for debugging
+    const formData = {
+        from_name: contactForm.from_name.value,
+        from_email: contactForm.from_email.value,
+        message: contactForm.message.value
+    };
+    console.log('Sending email with data:', formData);
+    
+    // Send email using EmailJS
+    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, formData)
+        .then((response) => {
+            console.log('SUCCESS!', response.status, response.text);
+            alert('Thank you for your message! I will get back to you soon.');
+            contactForm.reset();
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+        })
+        .catch((error) => {
+            console.error('EmailJS Error:', error);
+            alert('Oops! Something went wrong. Error: ' + (error.text || error.message || 'Unknown error'));
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+        });
 });
 
 // Animate elements on scroll

@@ -7,6 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 <body>
     <!-- Navigation -->
@@ -237,7 +238,7 @@
 
             <div class="project-card">
                 <div class="project-image">
-                    <img src="images/burger-troops.jpg" alt="Burger Troops - Restaurant System">
+                    <img src="images/BurgerTroops.png" alt="Burger Troops - Restaurant System">
                 </div>
                 <div class="project-content">
                     <h3>Burger Troops - Restaurant System</h3>
@@ -352,20 +353,20 @@
                 </div>
             </div>
 
-            <form class="contact-form">
+            <form class="contact-form" id="contact-form">
                 <div class="form-group">
                     <label for="name">Your Name</label>
-                    <input type="text" id="name" name="name" placeholder="Name" required>
+                    <input type="text" id="name" name="from_name" placeholder="Name" required>
                 </div>
                 <div class="form-group">
                     <label for="email">Your Email</label>
-                    <input type="email" id="email" name="email" placeholder="Email Address" required>
+                    <input type="email" id="email" name="from_email" placeholder="Email Address" required>
                 </div>
                 <div class="form-group">
                     <label for="message">Your Message</label>
                     <textarea id="message" name="message" placeholder="Hello, I'd like to discuss..." required></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary" style="width: 100%;">
+                <button type="submit" class="btn btn-primary" id="submit-btn" style="width: 100%;">
                     <i class="fas fa-paper-plane"></i> Send Message
                 </button>
             </form>
